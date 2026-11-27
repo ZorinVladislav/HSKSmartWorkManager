@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Профили для сборки Hardcore SK (ветка alpha, hcsk 1.6.4518).
+    priority = 10: перекрывают ванильные профили (priority 0) для тех же видов работ.
+    requiresMods: профиль действует, только если активен хотя бы один из модов.
+    Статы, которых нет в игре, анализатор покажет в разделе «Проблемы профилей».
+    NuclearWork (Rimatomics) пока использует запасной профиль: у него нет навыков, статы уточняются по отчёту.
+  -->
+
+  <!-- HSK: точный стат кузнечного дела вместо GeneralLaborSpeed. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_Smithing</defName>
+    <workType>Smithing</workType>
+    <category>Primary</category>
+    <skillWeight>0.6</skillWeight>
+    <statWeight>0.4</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.hsk</li>
+      <li>skyarkhangel.hsk.core</li>
+    </requiresMods>
+    <stats>
+      <li><stat>SmithingSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- HSK: точный стат шитья. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_Tailoring</defName>
+    <workType>Tailoring</workType>
+    <category>Primary</category>
+    <skillWeight>0.6</skillWeight>
+    <statWeight>0.4</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.hsk</li>
+      <li>skyarkhangel.hsk.core</li>
+    </requiresMods>
+    <stats>
+      <li><stat>TailoringSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- HSK: камнетёсное дело и электроника относятся к ремеслу. Проверить по отчёту, к какой работе HSK отнёс электронику. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_Crafting</defName>
+    <workType>Crafting</workType>
+    <category>Primary</category>
+    <skillWeight>0.6</skillWeight>
+    <statWeight>0.4</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.hsk</li>
+      <li>skyarkhangel.hsk.core</li>
+    </requiresMods>
+    <stats>
+      <li><stat>GeneralLaborSpeed</stat><weight>1</weight></li>
+      <li><stat>StonecuttingSpeed</stat><weight>0.5</weight></li>
+      <li><stat>ElectronicCraftingSpeed</stat><weight>0.5</weight></li>
+      <li><stat>DrugSynthesisSpeed</stat><weight>0.25</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Survival Tools: MiningYieldDigging учитывает кирку. CollectingSpeed (HSK) — сбор глины, песка, торфа. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_Mining</defName>
+    <workType>Mining</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.survivaltoolslite</li>
+    </requiresMods>
+    <stats>
+      <li><stat>MiningSpeed</stat><weight>1</weight></li>
+      <li><stat>MiningYieldDigging</stat><weight>1</weight></li>
+      <li><stat>MiningYield</stat><weight>0.5</weight></li>
+      <li><stat>CollectingSpeed</stat><weight>0.25</weight></li>
+      <li><stat>DeepDrillingSpeed</stat><weight>0.25</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Survival Tools: PlantHarvestingSpeed учитывает серп. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_Growing</defName>
+    <workType>Growing</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.survivaltoolslite</li>
+    </requiresMods>
+    <stats>
+      <li><stat>PlantWorkSpeed</stat><weight>1</weight></li>
+      <li><stat>PlantHarvestingSpeed</stat><weight>0.5</weight></li>
+      <li><stat>PlantHarvestYield</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Survival Tools: TreeFellingSpeed учитывает топор. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_PlantCutting</defName>
+    <workType>PlantCutting</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0.3</skillWeight>
+    <statWeight>0.7</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.survivaltoolslite</li>
+    </requiresMods>
+    <stats>
+      <li><stat>TreeFellingSpeed</stat><weight>1</weight></li>
+      <li><stat>PlantHarvestingSpeed</stat><weight>0.5</weight></li>
+      <li><stat>PlantWorkSpeed</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Quarry: добыча в карьере. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_QuarryMining</defName>
+    <workType>QuarryMining</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>ogliss.thewhitecrayon.quarry</li>
+    </requiresMods>
+    <stats>
+      <li><stat>MiningSpeed</stat><weight>1</weight></li>
+      <li><stat>MiningYield</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Hospitality: работа с гостями. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_Diplomat</defName>
+    <workType>Diplomat</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>orion.hospitality</li>
+    </requiresMods>
+    <stats>
+      <li><stat>NegotiationAbility</stat><weight>1</weight></li>
+      <li><stat>SocialImpact</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Allow Tool: срочная переноска. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_HaulingUrgent</defName>
+    <workType>HaulingUrgent</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>unlimitedhugs.allowtool</li>
+    </requiresMods>
+    <stats>
+      <li><stat>MoveSpeed</stat><weight>1</weight></li>
+      <li><stat>CarryingCapacity</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- Allow Tool: добивание. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_FinishingOff</defName>
+    <workType>FinishingOff</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0.7</skillWeight>
+    <statWeight>0.3</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>unlimitedhugs.allowtool</li>
+    </requiresMods>
+    <stats>
+      <li><stat>MeleeHitChance</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <!-- HSK: переноска для построек Biotech. -->
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_HSK_BiotechHauling</defName>
+    <workType>BiotechHauling</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+    <priority>10</priority>
+    <requiresMods>
+      <li>skyarkhangel.hsk</li>
+      <li>skyarkhangel.hsk.core</li>
+    </requiresMods>
+    <stats>
+      <li><stat>MoveSpeed</stat><weight>1</weight></li>
+      <li><stat>CarryingCapacity</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+</Defs>

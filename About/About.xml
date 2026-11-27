@@ -25,5 +25,9 @@ Stage I: read-only analyzer. Enable Dev Mode and run the debug action "HSK Smart
   <loadAfter>
     <li>brrainz.harmony</li>
     <li>Ludeon.RimWorld</li>
+    <li>skyarkhangel.hsk</li>
+    <li>skyarkhangel.hsk.core</li>
+    <li>skyarkhangel.hsk.dlc</li>
+    <li>arof.fluffy.worktab.continued</li>
   </loadAfter>
 </ModMetaData>

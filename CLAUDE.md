@@ -85,7 +85,8 @@
 HSKSmartWorkManager/
 ├── .github/workflows/build.yml     # сборка и публикация Release
 ├── About/About.xml
-├── Defs/WorkProfiles_Vanilla.xml   # профили ванильных работ
+├── Defs/WorkProfiles_Vanilla.xml   # профили ванильных работ (priority 0)
+├── Defs/WorkProfiles_HSK.xml       # профили HSK (priority 10, requiresMods)
 ├── Assemblies/                     # создаётся сборкой, в git не хранится
 ├── Source/
 │   ├── HSKSmartWorkManager.csproj
@@ -123,18 +124,33 @@ HSKSmartWorkManager/
 - `Source/Analysis`: анализаторы и `ReportFormatter`. Отчёт: активные моды с packageId, WorkTypeDef, проблемы профилей, статы сторонних модов, колонисты;
 - `Source/Debug`: dev-действия «Анализ колонистов» и «Пересобрать профили», окно отчёта (рисует только видимые строки, чтобы большой текст не обрезался);
 - `Defs/WorkProfiles_Vanilla.xml`: профили ванильных работ.
+- `Defs/WorkProfiles_HSK.xml`: первая версия профилей HSK, составлена по репозиторию сборки, до получения отчёта из игры.
+- У `WorkProfileDef` есть поля `priority` (при нескольких профилях на одну работу побеждает больший, при равенстве — загруженный позже; порядок файлов внутри мода не гарантирован) и `requiresMods` (packageId без учёта регистра; если ни один не активен, профиль не применяется и попадает в отчёт).
 
 ## 7. Решения по процессу и открытые вопросы
 
 - Ник автора: **Mioko**.
 - Release `latest` публикуется **только из `main`**. На PR workflow запускает проверочную сборку без публикации (плюс artifact). Разработка идёт в ветках `claude/*` через PR.
 - В облачном контейнере .NET SDK ставится через `apt-get install dotnet-sdk-8.0`, и сборку можно проверить до push.
-- **Открыто:** packageId ядра HSK для `loadAfter`. Его покажет раздел 1 отчёта анализатора или `ModsConfig.xml`.
 - **Следующий шаг:** пользователь присылает `analysis.txt`, по нему пишется `Defs/WorkProfiles_HSK.xml`.
 
 ---
 
-## 8. Описание репозитория
+## 8. Сборка HSK: факты для разработки
+
+Источник: https://github.com/HardcoreSK/Hardcore-SK, ветка `alpha` (hcsk 1.6.4518 rev 84, RimWorld 1.6.4871, все 5 DLC). Репозиторий весит несколько ГБ; для просмотра клонировать с `--depth 1 --filter=blob:none --no-checkout` и извлекать нужные файлы через `git checkout alpha -- <путь>`.
+
+- **Ядро:** `skyarkhangel.hsk` (папка `Mods/Core_SK`), `skyarkhangel.hsk.core`, `skyarkhangel.hsk.dlc`. Harmony: `brrainz.harmony`. Все они в `loadAfter`.
+- **Work Tab** (`arof.fluffy.worktab.continued`) входит в сборку: приоритеты 1–9, приоритеты по WorkGiver и по часам. Интерфейс этапа IV встраивается в Work Tab, а не в ванильную вкладку. Перехват ручных изменений (этап III) нужно проверить по DLL Work Tab: его методы установки приоритета могут не вызывать ванильный `SetPriority`.
+- **Виды работ из модов:** `HaulingUrgent`, `FinishingOff` (Allow Tool), `BiotechHauling` (ядро HSK), `Diplomat` (Hospitality), `QuarryMining` (Quarry), `NuclearWork` (Rimatomics, без навыков).
+- **Рабочие статы HSK:** `SmithingSpeed`, `TailoringSpeed`, `StonecuttingSpeed`, `ElectronicCraftingSpeed`, `CollectingSpeed` (сбор глины, песка, торфа; навык Mining).
+- **Survival Tools Lite** (`skyarkhangel.survivaltoolslite`): `MiningYieldDigging`, `PlantHarvestingSpeed`, `TreeFellingSpeed` — учитывают инструменты через `StatPart_SurvivalTool`, то есть уже входят в `GetStatValue`.
+- **Combat Extended** меняет боевые статы (важно для охоты и добивания).
+- Моды, тоже влияющие на работу: Pick Up And Haul, Cleaning Priority, Common Sense, WVC Work Modes.
+
+---
+
+## 9. Описание репозитория
 
 **Description:** RimWorld 1.6 mod for Hardcore SK: rates colonists' work efficiency and auto-assigns work priorities without overriding your manual choices. / Мод для RimWorld 1.6 и Hardcore SK: оценка эффективности колонистов и автораспределение работ с сохранением ручных настроек.
 
