@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Профили ванильных видов работ.
+    workType и stat — defName строками: если вида работы или стата нет, ошибки загрузки не будет,
+    анализатор покажет их в разделе «Проблемы профилей».
+    category: Critical / Primary / Auxiliary. inverted = true — меньшее значение лучше.
+    Профиль из мода, загруженного позже, перекрывает профиль для того же workType.
+  -->
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Firefighter</defName>
+    <workType>Firefighter</workType>
+    <category>Critical</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+    <stats>
+      <li><stat>MoveSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Patient</defName>
+    <workType>Patient</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Doctor</defName>
+    <workType>Doctor</workType>
+    <category>Critical</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>MedicalTendQuality</stat><weight>1</weight></li>
+      <li><stat>MedicalTendSpeed</stat><weight>0.5</weight></li>
+      <li><stat>MedicalSurgerySuccessChance</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_PatientBedRest</defName>
+    <workType>PatientBedRest</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_BasicWorker</defName>
+    <workType>BasicWorker</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+    <stats>
+      <li><stat>WorkSpeedGlobal</stat><weight>1</weight></li>
+      <li><stat>MoveSpeed</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Warden</defName>
+    <workType>Warden</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>NegotiationAbility</stat><weight>1</weight></li>
+      <li><stat>SocialImpact</stat><weight>0.5</weight></li>
+      <li><stat>ArrestSuccessChance</stat><weight>0.25</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Handling</defName>
+    <workType>Handling</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>TameAnimalChance</stat><weight>1</weight></li>
+      <li><stat>TrainAnimalChance</stat><weight>1</weight></li>
+      <li><stat>AnimalGatherYield</stat><weight>0.5</weight></li>
+      <li><stat>AnimalGatherSpeed</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Cooking</defName>
+    <workType>Cooking</workType>
+    <category>Critical</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>CookSpeed</stat><weight>1</weight></li>
+      <li><stat>FoodPoisonChance</stat><weight>1.5</weight><inverted>true</inverted></li>
+      <li><stat>ButcheryFleshSpeed</stat><weight>0.5</weight></li>
+      <li><stat>ButcheryFleshEfficiency</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Hunting</defName>
+    <workType>Hunting</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>ShootingAccuracyPawn</stat><weight>1</weight></li>
+      <li><stat>AimingDelayFactor</stat><weight>0.5</weight><inverted>true</inverted></li>
+      <li><stat>HuntingStealth</stat><weight>0.5</weight></li>
+      <li><stat>MoveSpeed</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Construction</defName>
+    <workType>Construction</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>ConstructionSpeed</stat><weight>1</weight></li>
+      <li><stat>ConstructSuccessChance</stat><weight>1</weight></li>
+      <li><stat>SmoothingSpeed</stat><weight>0.25</weight></li>
+      <li><stat>FixBrokenDownBuildingSuccessChance</stat><weight>0.25</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Growing</defName>
+    <workType>Growing</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>PlantWorkSpeed</stat><weight>1</weight></li>
+      <li><stat>PlantHarvestYield</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Mining</defName>
+    <workType>Mining</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>MiningSpeed</stat><weight>1</weight></li>
+      <li><stat>MiningYield</stat><weight>1</weight></li>
+      <li><stat>DeepDrillingSpeed</stat><weight>0.25</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_PlantCutting</defName>
+    <workType>PlantCutting</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0.3</skillWeight>
+    <statWeight>0.7</statWeight>
+    <stats>
+      <li><stat>PlantWorkSpeed</stat><weight>1</weight></li>
+      <li><stat>PlantHarvestYield</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Smithing</defName>
+    <workType>Smithing</workType>
+    <category>Primary</category>
+    <skillWeight>0.6</skillWeight>
+    <statWeight>0.4</statWeight>
+    <stats>
+      <li><stat>GeneralLaborSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Tailoring</defName>
+    <workType>Tailoring</workType>
+    <category>Primary</category>
+    <skillWeight>0.6</skillWeight>
+    <statWeight>0.4</statWeight>
+    <stats>
+      <li><stat>GeneralLaborSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Art</defName>
+    <workType>Art</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0.7</skillWeight>
+    <statWeight>0.3</statWeight>
+    <stats>
+      <li><stat>GeneralLaborSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Crafting</defName>
+    <workType>Crafting</workType>
+    <category>Primary</category>
+    <skillWeight>0.6</skillWeight>
+    <statWeight>0.4</statWeight>
+    <stats>
+      <li><stat>GeneralLaborSpeed</stat><weight>1</weight></li>
+      <li><stat>DrugSynthesisSpeed</stat><weight>0.25</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Hauling</defName>
+    <workType>Hauling</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+    <stats>
+      <li><stat>MoveSpeed</stat><weight>1</weight></li>
+      <li><stat>CarryingCapacity</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Cleaning</defName>
+    <workType>Cleaning</workType>
+    <category>Auxiliary</category>
+    <skillWeight>0</skillWeight>
+    <statWeight>1</statWeight>
+    <stats>
+      <li><stat>WorkSpeedGlobal</stat><weight>1</weight></li>
+      <li><stat>MoveSpeed</stat><weight>0.5</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+  <HSKSmartWorkManager.WorkProfileDef>
+    <defName>HSKSWM_Vanilla_Research</defName>
+    <workType>Research</workType>
+    <category>Primary</category>
+    <skillWeight>0.5</skillWeight>
+    <statWeight>0.5</statWeight>
+    <stats>
+      <li><stat>ResearchSpeed</stat><weight>1</weight></li>
+    </stats>
+  </HSKSmartWorkManager.WorkProfileDef>
+
+</Defs>

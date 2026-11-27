@@ -1,0 +1,58 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MOD_FOLDER: HSKSmartWorkManager
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet build Source/HSKSmartWorkManager.csproj -c Release
+
+      - name: Package
+        run: |
+          set -e
+          rm -rf dist
+          mkdir -p "dist/$MOD_FOLDER"
+          cp -r About Defs Assemblies "dist/$MOD_FOLDER/"
+          cp README.md "dist/$MOD_FOLDER/"
+          echo "Assemblies:"; ls -la "dist/$MOD_FOLDER/Assemblies"
+          (cd dist && zip -r "../$MOD_FOLDER.zip" "$MOD_FOLDER")
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.MOD_FOLDER }}
+          path: dist/
+
+      - name: Publish release "latest"
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          gh release delete latest --yes --cleanup-tag || true
+          gh release create latest "$MOD_FOLDER.zip" \
+            --target "$GITHUB_SHA" \
+            --title "HSK Smart Work Manager (latest build)" \
+            --notes "Automatic build from commit $GITHUB_SHA. Download $MOD_FOLDER.zip and extract it into RimWorld/Mods. / Автоматическая сборка. Скачайте $MOD_FOLDER.zip и распакуйте в папку RimWorld/Mods." \
+            --latest
