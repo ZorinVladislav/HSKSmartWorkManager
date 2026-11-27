@@ -72,7 +72,7 @@ namespace HSKSmartWorkManager
                     ? "нет"
                     : profile.isFallback
                         ? "ЗАПАСНОЙ (Primary, WorkSpeedGlobal)"
-                        : $"{profile.source.defName} ({profile.category}, мод: {profile.source.modContentPack?.Name ?? "?"})";
+                        : $"{profile.source.defName} ({profile.category}, файл: {profile.source.fileName ?? "?"})";
                 sb.AppendLine($"{wt.defName} | {wt.labelShort ?? wt.label} | {ModName(wt)} | {wt.naturalPriority} | {skills} | {profileText}");
             }
         }
@@ -99,7 +99,13 @@ namespace HSKSmartWorkManager
             foreach (string overridden in WorkProfileRegistry.OverriddenProfiles)
             {
                 any = true;
-                sb.AppendLine("Профиль перекрыт: " + overridden);
+                sb.AppendLine("Профиль перекрыт (проигравший → действующий): " + overridden);
+            }
+
+            foreach (InactiveProfileEntry entry in WorkProfileRegistry.InactiveProfiles)
+            {
+                any = true;
+                sb.AppendLine($"Профиль не применён: {entry.profileDefName} ({entry.workTypeName}) — нет мода {entry.requiredMods}");
             }
 
             if (!any)

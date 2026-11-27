@@ -33,6 +33,18 @@ namespace HSKSmartWorkManager
         public float skillWeight = 0.6f;
         public float statWeight = 0.4f;
 
+        /// <summary>
+        /// Если для одного вида работ есть несколько профилей, действует профиль с наибольшим priority
+        /// (при равенстве — загруженный позже). Ванильные профили: 0, профили HSK: 10.
+        /// </summary>
+        public int priority;
+
+        /// <summary>
+        /// packageId модов (без учёта регистра). Если список не пуст и ни один из модов не активен,
+        /// профиль не применяется.
+        /// </summary>
+        public List<string> requiresMods = new List<string>();
+
         public override IEnumerable<string> ConfigErrors()
         {
             foreach (string error in base.ConfigErrors())
