@@ -1,0 +1,8 @@
+bin/
+obj/
+Assemblies/*.dll
+Assemblies/*.pdb
+*.user
+.vs/
+.idea/
+*.zip

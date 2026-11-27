@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>HSK Smart Work Manager</name>
+  <author>Mioko</author>
+  <packageId>Mioko.HSKSmartWorkManager</packageId>
+  <url>https://github.com/ZorinVladislav/HSKSmartWorkManager</url>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Rates colonists' work efficiency and (in later versions) auto-assigns work priorities without overriding your manual choices. Built for Hardcore SK.
+
+Stage I: read-only analyzer. Enable Dev Mode and run the debug action "HSK Smart Work → Анализ колонистов".
+
+Оценка эффективности колонистов и (в следующих версиях) автораспределение работ с сохранением ручных настроек. Создан под Hardcore SK.
+
+Этап I: только анализатор, ничего не меняет в игре.</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld</li>
+  </loadAfter>
+</ModMetaData>
